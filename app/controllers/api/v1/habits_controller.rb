@@ -3,14 +3,25 @@ class Api::V1::HabitsController < ApplicationController
 
   # GET /habits
   def index
-    @habits = Habit.all
-
-    render json: @habits
+    if logged_in?
+      @habits = current_user.habits
+      render json: HabitSerializer.new(@habits)
+    else
+      render json: {
+        error: "You must me logged in to see habits"
+      }
+    end
   end
 
   # GET /habits/1
   def show
-    render json: @habit
+    if @habit
+      render json: HabitSerializer.new(@habit)
+    else
+      render json: {
+        error: "You must me logged in to see habit"
+      }
+    end
   end
 
   # POST /habits
