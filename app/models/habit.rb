@@ -1,4 +1,6 @@
 class Habit < ApplicationRecord
   belongs_to :user
   has_many :logs
+
+  validates :name, presence: true
 end
