@@ -20,6 +20,14 @@ class Api::V1::UsersController < ApplicationController
     @user = User.new(user_params)
     
     if @user.save
+      habits = [
+        'Exercise',
+        'Drink 6 Cups of Water',
+        'Meditate',
+        'Stay Home'
+      ]
+      habits.each {|h| @user.habits.build(name: h)}
+      @user.save
       session[:user_id] = @user.id
       render json: UserSerializer.new(@user), status: :created
     else
