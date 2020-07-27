@@ -3,6 +3,7 @@ class User < ApplicationRecord
     has_many :habits
     has_many :logs, through: :habits
 
+    validates :name, presence: true
     validates :email, uniqueness: true, presence: true
     validates :username, uniqueness: true, presence: true
 end
