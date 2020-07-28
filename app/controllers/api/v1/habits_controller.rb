@@ -40,10 +40,14 @@ class Api::V1::HabitsController < ApplicationController
 
   # PATCH/PUT /habits/1
   def update
-    if @habit.update(habit_params)
-      render json: @habit
-    else
-      render json: @habit.errors, status: :unprocessable_entity
+    if logged_in? && current_user === @habit.user
+      if @habit.update(habit_params)
+        render json: HabitSerializer.new(@habit), status: :ok
+      else
+        render json: {
+          error: @habit.errors.full_messages.to_sentence
+        }
+      end
     end
   end
 
