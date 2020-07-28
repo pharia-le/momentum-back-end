@@ -26,12 +26,15 @@ class Api::V1::HabitsController < ApplicationController
 
   # POST /habits
   def create
-    @habit = Habit.new(habit_params)
-
-    if @habit.save
-      render json: @habit, status: :created, location: @habit
-    else
-      render json: @habit.errors, status: :unprocessable_entity
+    if logged_in?
+      @habit = current_user.habits.build(habit_params)
+      if @habit.save
+        render json: HabitSerializer.new(@habit)
+      else
+        render json: {
+          error: @habit.errors.full_messages.to_sentence
+        }
+      end
     end
   end
 
