@@ -53,7 +53,14 @@ class Api::V1::HabitsController < ApplicationController
 
   # DELETE /habits/1
   def destroy
-    @habit.destroy
+    if @habit.destroy
+      render json:  { data: "Habit successfully destroyed" }, status: :ok
+    else
+      error_resp = {
+        error: "Habit not found and not destroyed"
+      }
+      render json: error_resp, status: :unprocessable_entity
+    end
   end
 
   private
