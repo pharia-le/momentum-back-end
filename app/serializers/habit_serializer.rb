@@ -1,5 +1,4 @@
 class HabitSerializer
   include FastJsonapi::ObjectSerializer
-  attributes :name, :created_at
-  has_many :logs, serializer: LogSerializer
+  attributes :name, :created_at, :logs
 end
