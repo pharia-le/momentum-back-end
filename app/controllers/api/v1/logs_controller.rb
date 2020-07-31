@@ -16,11 +16,12 @@ class Api::V1::LogsController < ApplicationController
   # POST /logs
   def create
     @log = Log.new(log_params)
-
     if @log.save
-      render json: @log, status: :created, location: @log
+      render json: @log
     else
-      render json: @log.errors, status: :unprocessable_entity
+      render json: {
+        error: @log.errors.full_messages.to_sentence
+      }
     end
   end
 
