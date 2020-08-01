@@ -36,7 +36,14 @@ class Api::V1::LogsController < ApplicationController
 
   # DELETE /logs/1
   def destroy
-    @log.destroy
+    if @log.destroy
+      render json:  { data: "Log successfully destroyed" }, status: :ok
+    else
+      error_resp = {
+        error: "Log not found and not destroyed"
+      }
+      render json: error_resp, status: :unprocessable_entity
+    end
   end
 
   private
