@@ -1,7 +1,11 @@
 class Api::V1::SessionsController < ApplicationController
   
   def create
-    @user = User.find_by(username: params[:session][:username])
+    if params[:session][:user_credential].include?('@')
+      @user = User.find_by(email: params[:session][:user_credential])
+    else
+      @user = User.find_by(username: params[:session][:user_credential])
+    end
 
     if @user && @user.authenticate(params[:session][:password])
       session[:user_id] = @user.id
