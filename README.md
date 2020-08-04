@@ -68,4 +68,4 @@ This project is licensed under the MIT Open Source Public License.
 
 ## Front End
 
-Back end is [here](https://github.com/pharia-le/productivity-front-end)
+Front end is [here](https://github.com/pharia-le/productivity-front-end)
