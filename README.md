@@ -1,15 +1,15 @@
 
-# Productivity+
+# Momentum
 
-Productivity+ is a web application where a user may track their habits on a daily basis & see their gathered data visually. The front-end is built on React & Redux and data is stored within a Ruby on Rails back-end API.
+Momentum is a web application where a user may track their habits on a daily basis & see their gathered data visually. The front-end is built on React & Redux and data is stored within a Ruby on Rails back-end API.
 
 ### Installing
 
 Clone front-end and back-end repositories to chosen directory.
 
 ```
-git clone git@github.com:pharia-le/productivity-back-end.git
-git clone git@github.com:pharia-le/productivity-front-end.git
+git clone git@github.com:pharia-le/momentum-back-end.git
+git clone git@github.com:pharia-le/momentum-front-end.git
 ```
 
 Within productivity-back-end, perform the following:
@@ -68,4 +68,4 @@ This project is licensed under the MIT Open Source Public License.
 
 ## Front End
 
-Front end is [here](https://github.com/pharia-le/productivity-front-end)
+Front end is [here](https://github.com/pharia-le/momentum-front-end)
