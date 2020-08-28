@@ -1,6 +1,15 @@
 class Api::V1::LogsController < ApplicationController
   before_action :set_log, only: [:show, :update, :destroy]
 
+  def index
+    @logs = Log.all
+    render json: @logs
+  end
+
+  def show
+    render json: @log
+  end
+
   def create
     @log = Log.new(log_params)
     if @log.save
